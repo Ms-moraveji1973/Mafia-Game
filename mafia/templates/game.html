@@ -4,6 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mafia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .mafia {
+            color: red;
+            font-weight: bold;
+        }
+        .citizen {
+            color: blue;
+        }
+    </style>
 </head>
 <body>
     <table>
@@ -14,7 +41,7 @@
         {% for player in players %}
         <tr>
             <td> {{player.name}} </td>
-            <td> {{player.role}} </td>
+            <td class="{{ player.role }}" > {{player.role}} </td>
         </tr>
         {% endfor %}
     </table>
