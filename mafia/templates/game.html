@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mafia</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Player</th>
+            <th>Role</th>
+        </tr>
+        {% for player in players %}
+        <tr>
+            <td> {{player.name}} </td>
+            <td> {{player.role}} </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

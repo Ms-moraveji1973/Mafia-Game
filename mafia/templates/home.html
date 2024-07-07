@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mafia</title>
+</head>
+<body>
+<h1>Please Enter Your Number</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="number" name="mafia_player" min="5">
+    <input type="submit" value="Let's Play!">
+</form>
+</body>
+</html>
