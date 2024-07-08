@@ -6,10 +6,14 @@
     <title>Mafia</title>
     <!-- Add Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/mafia.png">
+
+    <!-- Add Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <!-- CSS Styles -->
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Cinzel', serif;
             background-color: #f8f9fa;
             background-image: url('https://s3.amazonaws.com/zweb-s3.uploads/ez2/wp-content/uploads/2022/03/GettyImages-1262748660-fb.jpg');
             background-size: cover;
@@ -30,21 +34,57 @@
             overflow: auto;
             max-height: 80vh;
         }
+        h1 {
+            font-size: 2.5rem;
+        }
         .table {
             margin-top: 20px;
         }
-        .mafia {
-            color: red;
+        .GodFather{
+            color: rgb(88, 0, 0); 
             font-weight: bold;
         }
-        .citizen {
+        .GoodMan {
+            color: rgb(139, 0, 0);
+        }
+        .Matador{
+            color: #864545;
+        }
+        .Mafia {
+            color: red;
+        }
+        .Citizen {
             color: blue;
+        }
+        .Doctor {
+            color:chocolate;
+        }
+        .Leon{
+            color: grey;
+        }
+        .Constantine{
+            color: rgb(16, 102, 5);
+        }
+        .Nostradamus{
+            color: rgb(135, 0, 161);
+        }
+        .Ken{
+            color: rgb(0, 167, 158);
         }
         .hidden {
             display: none;
         }
         .btn-toggle {
             margin-top: 5px;
+        }   
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            position: absolute;
+            bottom: 0;
         }
     </style>
     <script>
@@ -96,6 +136,7 @@
             </table>
         </div>
     </div>
+    <footer class="footer">&copy; 2024 Mafia Game. All rights reserved. | Creator: Ms1973</footer>
 
     <!-- Add Bootstrap JavaScript libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
