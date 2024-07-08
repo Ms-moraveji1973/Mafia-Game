@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mafia</title>
+    <!-- Add Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CSS Styles -->
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa; 
-            background-image: url('https://s3.amazonaws.com/zweb-s3.uploads/ez2/wp-content/uploads/2022/03/GettyImages-1262748660-fb.jpg'); 
-            background-size: cover; 
-            background-position: center; 
+            background-color: #f8f9fa;
+            background-image: url('https://s3.amazonaws.com/zweb-s3.uploads/ez2/wp-content/uploads/2022/03/GettyImages-1262748660-fb.jpg');
+            background-size: cover;
+            background-position: center;
             margin: 0;
             padding: 0;
-            min-height: 100vh; 
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.9); 
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
             text-align: center;
-            overflow: auto; 
-            max-height: 80vh; 
+            overflow: auto;
+            max-height: 80vh;
         }
         .table {
             margin-top: 20px;
@@ -46,25 +48,26 @@
         }
     </style>
     <script>
-
         const clickCounts = {};
 
         function toggleVisibility(elementId, buttonId) {
             if (!clickCounts[elementId]) {
                 clickCounts[elementId] = 0;
             }
-            if (clickCounts[elementId] >= 2) {
-                document.getElementById(buttonId).disabled = true;
-                document.getElementById(buttonId).innerText = "it has been disable";
-                return;
-            }
-
+            clickCounts[elementId]++;
+            
             var element = document.getElementById(elementId);
             if (element.classList.contains('hidden')) {
                 element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
             }
-
-            clickCounts[elementId]++;
+            
+            if (clickCounts[elementId] >= 2) {
+                var button = document.getElementById(buttonId);
+                button.disabled = true;
+                button.innerText = "Disabled";
+            }
         }
     </script>
 </head>
@@ -85,7 +88,7 @@
                         <td>{{ player.name }}</td>
                         <td>
                             <span id="role-{{ forloop.counter }}" class="hidden {{ player.role }}">{{ player.role }}</span>
-                            <button id="button-{{ forloop.counter }}" class="btn btn-primary btn-sm btn-toggle" onclick="toggleVisibility('role-{{ forloop.counter }}', 'button-{{ forloop.counter }}')">hide/show</button>
+                            <button id="button-{{ forloop.counter }}" class="btn btn-primary btn-sm btn-toggle" onclick="toggleVisibility('role-{{ forloop.counter }}', 'button-{{ forloop.counter }}')">Show/Hide</button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -94,6 +97,7 @@
         </div>
     </div>
 
+    <!-- Add Bootstrap JavaScript libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

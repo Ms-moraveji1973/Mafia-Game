@@ -7,27 +7,27 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://s3.amazonaws.com/zweb-s3.uploads/ez2/wp-content/uploads/2022/03/GettyImages-1262748660-fb.jpg'); /* لینک تصویر پس‌زمینه خود را وارد کنید */
+            background-image: url('https://s3.amazonaws.com/zweb-s3.uploads/ez2/wp-content/uploads/2022/03/GettyImages-1262748660-fb.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             margin: 0;
             padding: 0;
-            height: 100vh; /* ارتفاع کامل صفحه */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-y: scroll; /* اضافه کردن اسکرول برای صفحه */
+            overflow-y: scroll;
         }
         .container {
-            background-color: rgba(255, 255, 255, 0.8); /* پس‌زمینه نیمه شفاف برای محتوا */
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
             text-align: center;
         }
         h1 {
-            color: #343a40; /* رنگ تیره برای متن */
+            color: #343a40;
             margin-bottom: 20px;
         }
         form {
@@ -38,13 +38,13 @@
             padding: 10px;
             margin: 10px 0;
             font-size: 16px;
-            border: 1px solid #ced4da; /* رنگ مرز */
+            border: 1px solid #ced4da;
             border-radius: 4px;
             box-sizing: border-box;
         }
         input[type="submit"] {
-            background-color: #007bff; /* رنگ آبی برای دکمه */
-            color: #fff; /* متن سفید */
+            background-color: #007bff;
+            color: #fff;
             border: none;
             padding: 12px 20px;
             text-align: center;
@@ -55,20 +55,20 @@
             cursor: pointer;
         }
         input[type="submit"]:hover {
-            background-color: #0056b3; /* رنگ آبی تیره در حال hover */
+            background-color: #0056b3;
         }
         a {
             display: block;
             text-decoration: none;
-            background-color: #007bff; /* رنگ آبی برای لینک */
-            color: #fff; /* متن سفید */
+            background-color: #007bff;
+            color: #fff;
             padding: 10px 20px;
             border-radius: 4px;
             margin-top: 20px;
             transition: background-color 0.3s ease;
         }
         a:hover {
-            background-color: #0056b3; /* رنگ آبی تیره در حال hover */
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -80,7 +80,7 @@
             <input type="number" name="mafia_player" min="5" required>
             <input type="submit" value="Let's Play!" class="btn btn-primary">
         </form>
-        <a href="{% url 'cart_mafia' %}">select 5 end cart</a>
+        <a href="{% url 'cart_mafia' %}">Select 5 End Cart</a>
     </div>
 </body>
 </html>
