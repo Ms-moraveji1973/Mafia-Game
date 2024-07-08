@@ -1,6 +1,6 @@
 # 🎭 Mafia Game
 
-Welcome to the **Mafia Game** project! This project uses HTML, CSS, and JavaScript to display cards for a Mafia game.
+Welcome to the **Mafia Game** project! This project uses HTML, CSS, JavaScript , Django to display cards for a Mafia game.
 
 ## Introduction
 
