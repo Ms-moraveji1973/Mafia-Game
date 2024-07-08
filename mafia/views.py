@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import MafiaRoleModel
+from .models import MafiaRoleModel , CartModel
 from random import shuffle
 # Create your views here.
 
@@ -20,24 +20,43 @@ def mafia(request):
         for i in range(num_players):
             players.append(MafiaRoleModel())
 
-        print(players)
-
         mafia_role = ['mafia'] * mafia_players
         shuffle(mafia_role)
         ken_role = ['ken'] * 1
-        leon_player = ['leon_player'] * 1
-        doctor_player = ['doctor_player'] * 1
-        constantine_player = ['constantine_player'] * 1
+        leon_role = ['leon_player'] * 1
+        doctor_role = ['doctor_player'] * 1
+        constantine_role = ['constantine_player'] * 1
         ken_role = ['ken'] * 1
-        nostradamus_player = ['nostradamus_player'] * 1
+        nostradamus_role = ['nostradamus_player'] * 1
         citizen_role = ['citizen'] * citizen_player 
-        all_role = mafia_role + citizen_role + leon_player + doctor_player + constantine_player + nostradamus_player + ken_role   
+        all_role = mafia_role + citizen_role + leon_role + doctor_role + constantine_role + nostradamus_role + ken_role   
         shuffle(all_role)
         for i in range(num_players):
             players[i].name = f"Player {i+1}"
             players[i].role = all_role[i]
 
+        for player in players :
+            player.save()
+        
         return render(request , 'game.html' , {'players':players    })
     else:
         return render(request ,'home.html')
+
+
+def cart(request):
+    carts = []
+
+    for i in range(0,5):
+        carts.append(CartModel())
+    silence = ['سکوت برره ها'] * 1
+    face_off = ['تغییر چهره'] * 1
+    imagin = ['ذهن زیبا'] * 1
+    person = ['افشای هویت'] * 1
+    dastband = ['دستبند '] * 1
+    all_carts = silence + face_off + imagin + person+  dastband
+    shuffle(all_carts)
+    for i in range (0,len(carts)) :
+        carts[i].cart_id = f"Number{i+1}"
+        carts[i].cart = all_carts[i]
+    return render(request , 'cart.html' , {'carts' : carts})
 

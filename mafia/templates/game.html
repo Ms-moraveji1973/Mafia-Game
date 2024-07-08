@@ -4,24 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mafia</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 50px auto;
+            background-color: #f8f9fa; 
+            background-image: url('https://s3.amazonaws.com/zweb-s3.uploads/ez2/wp-content/uploads/2022/03/GettyImages-1262748660-fb.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
             max-width: 600px;
+            text-align: center;
+            overflow: auto; 
+            max-height: 80vh; 
         }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
+        .table {
+            margin-top: 20px;
         }
         .mafia {
             color: red;
@@ -30,20 +38,64 @@
         .citizen {
             color: blue;
         }
+        .hidden {
+            display: none;
+        }
+        .btn-toggle {
+            margin-top: 5px;
+        }
     </style>
+    <script>
+
+        const clickCounts = {};
+
+        function toggleVisibility(elementId, buttonId) {
+            if (!clickCounts[elementId]) {
+                clickCounts[elementId] = 0;
+            }
+            if (clickCounts[elementId] >= 2) {
+                document.getElementById(buttonId).disabled = true;
+                document.getElementById(buttonId).innerText = "it has been disable";
+                return;
+            }
+
+            var element = document.getElementById(elementId);
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+            }
+
+            clickCounts[elementId]++;
+        }
+    </script>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Player</th>
-            <th>Role</th>
-        </tr>
-        {% for player in players %}
-        <tr>
-            <td> {{player.name}} </td>
-            <td class="{{ player.role }}" > {{player.role}} </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="container">
+        <h1 class="text-center my-4">Mafia Game</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Player</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in players %}
+                    <tr>
+                        <td>{{ player.name }}</td>
+                        <td>
+                            <span id="role-{{ forloop.counter }}" class="hidden {{ player.role }}">{{ player.role }}</span>
+                            <button id="button-{{ forloop.counter }}" class="btn btn-primary btn-sm btn-toggle" onclick="toggleVisibility('role-{{ forloop.counter }}', 'button-{{ forloop.counter }}')">hide/show</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

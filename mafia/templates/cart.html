@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>Carts</title>
+    <style>
+        body {
+            font-family: 'IRANSans', Tahoma, Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('https://s3.amazonaws.com/zweb-s3.uploads/ez2/wp-content/uploads/2022/03/GettyImages-1262748660-fb.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-top: 20px;
+            color: #333;
+            font-size: 2rem;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .btn-toggle {
+            margin-top: 5px;
+        }
+        .mafia {
+            color: red;
+            font-weight: bold;
+        }
+        .citizen {
+            color: blue;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mafia Game</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in carts %}
+                    <tr>
+                        <td>{{ player.cart_id }}</td>
+                        <td>
+                            <span id="role-{{ forloop.counter }}" class="hidden {{ player.role }}">{{ player.cart }}</span>
+                            <button id="button-{{ forloop.counter }}" class="btn btn-primary btn-sm btn-toggle" onclick="toggleVisibility('role-{{ forloop.counter }}', 'button-{{ forloop.counter }}')">hide/show</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const clickCounts = {};
+
+        function toggleVisibility(elementId, buttonId) {
+            if (!clickCounts[elementId]) {
+                clickCounts[elementId] = 0;
+            }
+            if (clickCounts[elementId] >= 1) {
+                document.getElementById(buttonId).disabled = true;
+                document.getElementById(buttonId).innerText = "has been disabled";
+                return;
+            }
+
+            var element = document.getElementById(elementId);
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
+
+            clickCounts[elementId]++;
+        }
+    </script>
+</body>
+</html>

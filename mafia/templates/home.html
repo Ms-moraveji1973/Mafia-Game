@@ -4,13 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mafia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://s3.amazonaws.com/zweb-s3.uploads/ez2/wp-content/uploads/2022/03/GettyImages-1262748660-fb.jpg'); /* لینک تصویر پس‌زمینه خود را وارد کنید */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* ارتفاع کامل صفحه */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: scroll; /* اضافه کردن اسکرول برای صفحه */
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* پس‌زمینه نیمه شفاف برای محتوا */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #343a40; /* رنگ تیره برای متن */
+            margin-bottom: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ced4da; /* رنگ مرز */
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff; /* رنگ آبی برای دکمه */
+            color: #fff; /* متن سفید */
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* رنگ آبی تیره در حال hover */
+        }
+        a {
+            display: block;
+            text-decoration: none;
+            background-color: #007bff; /* رنگ آبی برای لینک */
+            color: #fff; /* متن سفید */
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        a:hover {
+            background-color: #0056b3; /* رنگ آبی تیره در حال hover */
+        }
+    </style>
 </head>
 <body>
-<h1>Please Enter Your Number</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    <input type="number" name="mafia_player" min="5">
-    <input type="submit" value="Let's Play!">
-</form>
+    <div class="container">
+        <h1>Please Enter Your Number</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="number" name="mafia_player" min="5" required>
+            <input type="submit" value="Let's Play!" class="btn btn-primary">
+        </form>
+        <a href="{% url 'cart_mafia' %}">select 5 end cart</a>
+    </div>
 </body>
 </html>

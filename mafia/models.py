@@ -13,5 +13,7 @@ class MafiaRoleModel(models.Model):
         return self.name + " (" + self.role + ")"
 
 
-class Player(models.Model):
-    pass
+class CartModel(models.Model):
+    cart_id = models.CharField(max_length=50)
+    cart = models.CharField(max_length=200 , choices =( ('silence' , 'Silence') , ('face_off' , 'Face_Off') , ('imagin' , 'Imagin') ,
+                                                         ('person' , 'Person') , ('dastband' , 'Dastband') ))
